@@ -20,7 +20,7 @@ app.use(cors()); // Cross-origin requests
 // Routes setup
 
 
-app.use("/api", routes);  // Prefixed with '/api/todos'
+app.use("/", routes);  // Prefixed with '/api/todos'
 
 // Server listener
 const PORT = process.env.PORT || 3000;
