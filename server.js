@@ -1,29 +1,30 @@
 const express = require('express');
 const cors = require('cors');
 const mongoose = require('mongoose');
-const routes = require("./routes/TodoRoute"); // your routes
-
+const routes = require('./routes/TodoRoute'); // adjust this if needed
 require('dotenv').config();
 
 const app = express();
 
-// MongoDB connection
+// Connect MongoDB
 mongoose
-    .connect(process.env.MONGO_URL)
-    .then(() => console.log("Connected to Mongo"))
-    .catch((err) => console.log(err));
+  .connect(process.env.MONGO_URL, { useNewUrlParser: true, useUnifiedTopology: true })
+  .then(() => console.log("Connected to MongoDB"))
+  .catch((err) => console.log("Mongo error:", err));
 
-// Middleware setup
-app.use(express.json()); // Ensure body parsing for POST requests
-app.use(cors()); // Cross-origin requests
+// Middleware
+app.use(cors());
+app.use(express.json());
 
-// Routes setup
+// Add a base route for testing
+app.get("/", (req, res) => {
+  res.send("Backend is running 🚀");
+});
 
+// Use your todo routes
+app.use("/api", routes); // All todo routes are under /api
 
-app.use("/", routes);  // Prefixed with '/api/todos'
-
-// Server listener
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
-    console.log(`Server is running on port ${PORT}`);
+  console.log(`Server running at port ${PORT}`);
 });
