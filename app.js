@@ -18,9 +18,9 @@ app.use(express.json()); // Ensure body parsing for POST requests
 app.use(cors()); // Cross-origin requests
 
 // Routes setup
-app.use ("/",routes)
 
-app.use("/api/todos", routes);  // Prefixed with '/api/todos'
+
+app.use("/api", routes);  // Prefixed with '/api/todos'
 
 // Server listener
 const PORT = process.env.PORT || 3000;
