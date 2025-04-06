@@ -1,11 +1,11 @@
 const { Router } = require("express");
-const { getToDo, saveToDo, updateToDo, deleteToDo } = require("../controllers/ToDoController.js");
+const { getToDo, saveToDo, deleteToDo, updateToDo } = require("../controllers/ToDoController");
 
 const router = Router();
 
-router.get("/", getToDo);
-router.post("/save", saveToDo);
-router.put("/:id", updateToDo);      // <-- this handles edit
-router.delete("/:id", deleteToDo);   // <-- this handles delete
+router.get("/todos", getToDo);           // GET /api/todos
+router.post("/save", saveToDo);          // POST /api/save
+router.put("/update/:id", updateToDo);   // PUT /api/update/:id
+router.delete("/delete/:id", deleteToDo);// DELETE /api/delete/:id
 
 module.exports = router;
