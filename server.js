@@ -17,12 +17,10 @@ app.use(cors());
 app.use(express.json());
 
 // Add a base route for testing
-app.get("/", (req, res) => {
-  res.send("Backend is running 🚀");
-});
+
 
 // Use your todo routes
-app.use("/api", routes); // All todo routes are under /api
+app.use("/", routes); // All todo routes are under /api
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
