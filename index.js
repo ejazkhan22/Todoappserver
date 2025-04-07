@@ -21,7 +21,7 @@ mongoose.connect(process.env.MONGO_URL, {
 // Base route
 
 // API routes
-app.use("/api", todoRoutes); // ✅ All your routes now start with /api
+app.use("/", todoRoutes); // ✅ All your routes now start with /api
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
