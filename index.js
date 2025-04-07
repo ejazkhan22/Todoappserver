@@ -19,7 +19,7 @@ mongoose.connect(process.env.MONGO_URL, {
 .catch((err) => console.log(err));
 
 // Base route
-app.get("/", todoRoutes);
+
 
 // API routes
 app.use("/", todoRoutes); // ✅ All your routes now start with /api
